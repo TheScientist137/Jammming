@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
@@ -14,6 +15,8 @@ const mockTrackList = [
 
 function App() {
   const [searchResults, setSearchResults] = useState([])
+  const [playlistName, setPlaylistName] = useState('My Plylist')
+  const [playlistTracks, setPlaylistTracks] = useState([])
 
   const handleSearch = (searchTerm) => {
     const results = mockTrackList.filter((track) => {
@@ -22,12 +25,16 @@ function App() {
     setSearchResults(results)
   }
 
+  const handleNameChange = (newName) => {
+    setPlaylistName(newName)
+  }
+
   return (
     <div className="App">
       <h1>Jammming</h1>
       <SearchBar onSearch={handleSearch} />
       <SearchResults results={searchResults} />
-      <Playlist />
+      <Playlist name={playlistName} onNameChange={handleNameChange} />
     </div>
   );
 }
