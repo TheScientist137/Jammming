@@ -1,8 +1,11 @@
-function SearchResults () {
+import Tracklist from '../Tracklist/Tracklist'
+
+function SearchResults (props) {
+
  return (
   <div>
-   <h2>SearchResults</h2>
-   <button>Search</button>
+   <h2>Results</h2>
+   <Tracklist results={props.results} />
   </div>
  )
 }
