@@ -2,7 +2,7 @@ import React from 'react'
 import Tracklist from '../Tracklist/Tracklist'
 
 function Playlist (props) {
-  const { name, tracks, onNameChange, onRemove } = props
+  const { name, tracks, onNameChange, onRemove, onSave } = props
 
   const handleName = (e) => {
    onNameChange(e.target.value)
@@ -12,7 +12,7 @@ function Playlist (props) {
     <div>
       <input value={name} onChange={handleName} />
       <Tracklist tracks={tracks} onRemove={onRemove} isRemoval={true}  />
-      <button>SAVE TO SPOTIFY</button>
+      <button onClick={onSave}>SAVE TO SPOTIFY</button>
     </div>
   )
 }

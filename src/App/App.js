@@ -48,6 +48,13 @@ function App () {
     setPlaylistTracks(updatedPlaylistTracks)
   }
 
+  const savePlaylistToSpotify = () => {
+    console.log('Lista de reproducciòn guardada con éxito (simulado)')
+    // Reseteamos la playlist y el nombre de la playlist
+    setPlaylistName('New Playlist')
+    setPlaylistTracks([])
+  }
+
   return (
     <div className='App'>
       <h1>Jammming</h1>
@@ -58,6 +65,7 @@ function App () {
         tracks={playlistTracks}
         onNameChange={handleNameChange}
         onRemove={removeTrack}
+        onSave={savePlaylistToSpotify}
       />
     </div>
   )
