@@ -1,6 +1,7 @@
-let accessToken = ''
 const clientId = 'a0adec2a386e463780f8df55d499ecb9'
 const redirectURI = 'http://localhost:3000/callback'
+let accessToken = ''
+let tokenExpirationTime = 0
 
 const Spotify = {
   getAccessToken () {
@@ -10,14 +11,20 @@ const Spotify = {
 
     const urlAccessToken = window.location.href.match(/access_token=([^&]*)/)
     const urlExpiresIn = window.location.href.match(/expires_in=([^&]*)/)
+
+    // Si encontramos un token en la URL y su tiempo de expiración, lo almacenamos.
     if (urlAccessToken && urlExpiresIn) {
-      console.log(urlAccessToken[1])
-      console.log(urlExpiresIn)
       accessToken = urlAccessToken[1]
       const expiresIn = Number(urlExpiresIn[1])
+      console.log(expiresIn)
 
-      window.setTimeout(() => (accessToken = ''), expiresIn * 1000)
+      // Calculamos la hora de expiración del token
+      tokenExpirationTime = Date.now() + expiresIn * 1000
+      console.log(tokenExpirationTime)
       window.history.pushState('Access Token', null, '/')
+      return accessToken
+      
+      // Si no hay token en la URL redirigimos al usuario para auntenticar.
     } else {
       const redirect = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`
       window.location = redirect
@@ -26,7 +33,6 @@ const Spotify = {
 
   async search (term) {
     const accessToken = Spotify.getAccessToken()
-    console.log(accessToken)
     const response = await fetch(
       `https://api.spotify.com/v1/search?type=track&q=${term}`,
       {
