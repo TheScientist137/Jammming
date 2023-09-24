@@ -14,8 +14,10 @@ function App () {
   const [playlistName, setPlaylistName] = useState('My Plylist')
   const [playlistTracks, setPlaylistTracks] = useState([])
   const [loading, setLoading] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
 
   const search = useCallback(term => {
+    setSearchTerm(term)
     Spotify.search(term).then(result => setSearchResults(result))
   }, [])
 
@@ -52,7 +54,7 @@ function App () {
     setLoading(true)
 
     const trackUris = playlistTracks.map(track => track.uri)
-    
+
     Spotify.savePlaylist(playlistName, trackUris).then(() => {
       setPlaylistName('New Playlist')
       setPlaylistTracks([])
@@ -63,7 +65,11 @@ function App () {
   return (
     <div className='App'>
       <h1>Jammming</h1>
-      <SearchBar onSearch={search} />
+      <SearchBar
+        onSearch={search}
+        searchTerm={searchTerm}
+        onTermChange={setSearchTerm}
+      />
       <div className='results-playlist'>
         <SearchResults searchResults={searchResults} onAdd={addTrack} />
         <Playlist
