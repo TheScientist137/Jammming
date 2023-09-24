@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState, useCallback } from 'react'
 
 import SearchBar from '../SearchBar/SearchBar'
@@ -16,10 +16,18 @@ function App () {
   const [loading, setLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
 
-  const search = useCallback(term => {
-    setSearchTerm(term)
-    Spotify.search(term).then(result => setSearchResults(result))
-  }, [])
+  const search = useCallback(
+    term => {
+      setSearchTerm(term)
+      Spotify.search(term).then(result => {
+        setSearchResults(result)
+
+        // Actualiza los datos de busqueda en el almacenamiento local del navegador
+        localStorage.setItem('searchResults', JSON.stringify(searchResults))
+      })
+    },
+    [searchResults]
+  )
 
   const addTrack = useCallback(
     track => {
@@ -30,6 +38,9 @@ function App () {
         // Actualiozamos la playlist con el nuevo track seleccionado
         const newPlaylistTracks = [...playlistTracks, track]
         setPlaylistTracks(newPlaylistTracks)
+
+        // Actualizamos los datos de la playlist en el almacenamiento local del navegador
+        localStorage.setItem('playlist', JSON.stringify(newPlaylistTracks))
       }
     },
     [playlistTracks]
@@ -37,11 +48,15 @@ function App () {
 
   const removeTrack = useCallback(
     track => {
-      // Actualizamos la playlist obviando el track seleccionado
+      // Filtra las canciones excluyendo la que vamos a eliminar
       const updatedPlaylistTracks = playlistTracks.filter(
         existingTrack => existingTrack.id !== track.id
       )
+      // Actualiza el estado local de la playlist con la cancion eliminada
       setPlaylistTracks(updatedPlaylistTracks)
+
+      // Actualizamos los datos de la playlist en el almacenamiento local del navegador
+      localStorage.setItem('playlist', JSON.stringify(updatedPlaylistTracks))
     },
     [playlistTracks]
   )
@@ -61,6 +76,23 @@ function App () {
       setLoading(false)
     })
   }, [playlistName, playlistTracks])
+
+  // Efecto para cargar datos desde el almacenamiento local cuando se monta el componente
+  useEffect(() => {
+    const cachedPlaylist = JSON.parse(localStorage.getItem('playlist'))
+    if (cachedPlaylist) {
+      console.log(cachedPlaylist)
+      setPlaylistTracks(cachedPlaylist)
+    }
+
+    const cachedSearchResults = JSON.parse(
+      localStorage.getItem('searchResults')
+    )
+    if (cachedSearchResults) {
+      console.log(cachedSearchResults)
+      setSearchResults(cachedSearchResults)
+    }
+  }, [])
 
   return (
     <div className='App'>
