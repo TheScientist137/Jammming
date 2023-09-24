@@ -84,14 +84,6 @@ function App () {
       console.log(cachedPlaylist)
       setPlaylistTracks(cachedPlaylist)
     }
-
-    const cachedSearchResults = JSON.parse(
-      localStorage.getItem('searchResults')
-    )
-    if (cachedSearchResults) {
-      console.log(cachedSearchResults)
-      setSearchResults(cachedSearchResults)
-    }
   }, [])
 
   return (
