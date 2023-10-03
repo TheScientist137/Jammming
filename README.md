@@ -1,1 +1,1 @@
-Jammming Project for codeCademy
+Jammming Project from codeCademy
