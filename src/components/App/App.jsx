@@ -63,6 +63,7 @@ function App () {
 
   const handleNameChange = useCallback(newName => {
     setPlaylistName(newName)
+    console.log('prueba')
   }, [])
 
   const savePlaylistToSpotify = useCallback(() => {
