@@ -1,1 +1,1 @@
-Jammming Project from codeCademy
+Jammming Project from codeCademy using Spotify API
