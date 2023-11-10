@@ -1,8 +1,6 @@
 import React, { useCallback } from 'react'
 import Tracklist from '../Tracklist/Tracklist'
 
-import './Playlist.css'
-
 function Playlist (props) {
   const { name, tracks, onNameChange, onRemove, onSave } = props
 

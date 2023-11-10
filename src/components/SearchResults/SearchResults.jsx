@@ -1,7 +1,5 @@
 import Tracklist from '../Tracklist/Tracklist'
 
-import './SearchResults.css'
-
 function SearchResults (props) {
   const { searchResults, onAdd } = props
 

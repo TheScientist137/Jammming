@@ -1,9 +1,0 @@
-.playlist {
- display: flex;
- flex-direction: column;
- justify-content: space-between;
-}
-
-.playlist input {
- text-align: center;
-}

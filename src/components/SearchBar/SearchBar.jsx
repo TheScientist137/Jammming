@@ -1,7 +1,5 @@
 import React, { useCallback } from 'react'
 
-import './SearchBar.css'
-
 function SearchBar (props) {
   const { onSearch, searchTerm, onTermChange } = props
 
