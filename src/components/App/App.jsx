@@ -7,8 +7,6 @@ import Playlist from '../Playlist/Playlist'
 import Spotify from '../../util/Spotify'
 import LoadingScreen from '../LoadingScreen/LoadingScreen'
 
-import './App.css'
-
 function App () {
   const [searchResults, setSearchResults] = useState([])
   const [playlistName, setPlaylistName] = useState('My Plylist')
@@ -87,15 +85,19 @@ function App () {
   }, [])
 
   return (
-    <div className='App'>
-      <h1>Jammming</h1>
+    <div className='m-0 w-100  vh-100'>
+      <div className='text-center py-3'>
+        <h1 className='display-3 m-0'>Jammming</h1>
+      </div>
       <SearchBar
         onSearch={search}
         searchTerm={searchTerm}
         onTermChange={setSearchTerm}
       />
-      <div className='results-playlist'>
+      <div className='position-start'>
         <SearchResults searchResults={searchResults} onAdd={addTrack} />
+      </div>
+      <div className='position-end'>
         <Playlist
           name={playlistName}
           tracks={playlistTracks}
@@ -103,8 +105,8 @@ function App () {
           onRemove={removeTrack}
           onSave={savePlaylistToSpotify}
         />
-        {loading && <LoadingScreen />}
       </div>
+      {loading && <LoadingScreen />}
     </div>
   )
 }

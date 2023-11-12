@@ -6,7 +6,7 @@ function Tracklist (props) {
     <div>
       {tracks.map(track => {
         return (
-          <div>
+          <div key={track.id}>
             <Track
               key={track.id}
               track={track}
