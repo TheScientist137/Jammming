@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useState, useCallback } from 'react'
 
+import '../../scss/custom.scss'
+
 import SearchBar from '../SearchBar/SearchBar'
 import SearchResults from '../SearchResults/SearchResults'
 import Playlist from '../Playlist/Playlist'
@@ -86,7 +88,7 @@ function App () {
 
   return (
     <div className='m-0 w-100  vh-100'>
-      <div className='text-center py-3'>
+      <div className='text-center py-3 bg-primary'>
         <h1 className='display-3 m-0'>Jammming</h1>
       </div>
       <SearchBar
