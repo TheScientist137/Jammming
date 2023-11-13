@@ -18,9 +18,9 @@ function Track (props) {
       <p>{track.artist}</p>
       <p>{track.album}</p>
       {isRemoval === true ? (
-        <button onClick={removeTrack}>Eliminar</button>
+        <button onClick={removeTrack}>-</button>
       ) : (
-        <button onClick={addTrack}>Agregar</button>
+        <button onClick={addTrack}>+</button>
       )}
       {track.preview_url && (
         <audio className='audio' controls>

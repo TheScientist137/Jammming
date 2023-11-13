@@ -9,7 +9,7 @@ function Playlist (props) {
   }, [onNameChange])
 
   return (
-    <div className='playlist'>
+    <div className='w-50 p-4 ms-2  border border-info'>
       <input value={name} onChange={handleName} />
       <Tracklist tracks={tracks} onRemove={onRemove} isRemoval={true}  />
       <button onClick={onSave}>SAVE TO SPOTIFY</button>

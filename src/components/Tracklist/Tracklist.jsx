@@ -3,7 +3,7 @@ import Track from '../Track/Track'
 function Tracklist (props) {
   const { tracks, onAdd, onRemove, isRemoval } = props
   return (
-    <div>
+    <div className='force-overflow'>
       {tracks.map(track => {
         return (
           <div key={track.id}>

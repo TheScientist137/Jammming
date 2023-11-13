@@ -87,26 +87,22 @@ function App () {
   }, [])
 
   return (
-    <div className='m-0 w-100  vh-100'>
-      <div className='text-center py-3 bg-primary'>
-        <h1 className='display-3 m-0'>Jammming</h1>
-      </div>
+    <div className='m-0 w-100 vh-100'>
+      <h1 className='m-0 text-center pt-2 pb-3  bg-primary'>Ja<span className='text-info'>mmm</span>ing</h1>
       <SearchBar
         onSearch={search}
         searchTerm={searchTerm}
         onTermChange={setSearchTerm}
       />
-      <div className='position-start'>
-        <SearchResults searchResults={searchResults} onAdd={addTrack} />
-      </div>
-      <div className='position-end'>
-        <Playlist
-          name={playlistName}
-          tracks={playlistTracks}
-          onNameChange={handleNameChange}
-          onRemove={removeTrack}
-          onSave={savePlaylistToSpotify}
-        />
+      <div className='h-75 mx-4 d-flex justify-content-center'>
+          <SearchResults searchResults={searchResults} onAdd={addTrack} />
+          <Playlist
+            name={playlistName}
+            tracks={playlistTracks}
+            onNameChange={handleNameChange}
+            onRemove={removeTrack}
+            onSave={savePlaylistToSpotify}
+          />
       </div>
       {loading && <LoadingScreen />}
     </div>
