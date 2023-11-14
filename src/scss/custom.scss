@@ -8,9 +8,11 @@ $primary: $title;
 $title-text: #794fd8;
 $info: $title-text;
 
-$button-text: #103871;
-$secondary: $button-text;
+$background: #103871;
+$light: $background;
 
+$input-text: #5c2a6f;
+$dark: $input-text;
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 

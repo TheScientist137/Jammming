@@ -3,11 +3,13 @@ import { useState, useCallback } from 'react'
 
 import '../../scss/custom.scss'
 
+import Header from '../Header/Header'
 import SearchBar from '../SearchBar/SearchBar'
 import SearchResults from '../SearchResults/SearchResults'
 import Playlist from '../Playlist/Playlist'
 import Spotify from '../../util/Spotify'
 import LoadingScreen from '../LoadingScreen/LoadingScreen'
+import Footer from '../Footer/Footer'
 
 function App () {
   const [searchResults, setSearchResults] = useState([])
@@ -87,24 +89,25 @@ function App () {
   }, [])
 
   return (
-    <div className='m-0 w-100 vh-100'>
-      <h1 className='m-0 text-center pt-2 pb-3  bg-primary'>Ja<span className='text-info'>mmm</span>ing</h1>
+    <div className='m-0 w-100 vh-100 bg-light'>
+      <Header />
       <SearchBar
         onSearch={search}
         searchTerm={searchTerm}
         onTermChange={setSearchTerm}
       />
       <div className='h-75 mx-4 d-flex justify-content-center'>
-          <SearchResults searchResults={searchResults} onAdd={addTrack} />
-          <Playlist
-            name={playlistName}
-            tracks={playlistTracks}
-            onNameChange={handleNameChange}
-            onRemove={removeTrack}
-            onSave={savePlaylistToSpotify}
-          />
+        <SearchResults searchResults={searchResults} onAdd={addTrack} />
+        <Playlist
+          name={playlistName}
+          tracks={playlistTracks}
+          onNameChange={handleNameChange}
+          onRemove={removeTrack}
+          onSave={savePlaylistToSpotify}
+        />
       </div>
       {loading && <LoadingScreen />}
+    <Footer />
     </div>
   )
 }

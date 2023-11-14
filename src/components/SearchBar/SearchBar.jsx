@@ -26,7 +26,7 @@ function SearchBar (props) {
   return (
     <div className='my-4 d-flex flex-column justify-content-center align-items-center'>
       <input
-        className='w-50 mb-4 form-control border-info'
+        className='w-50 mb-4 form-control border-info border-3 bg-transparent focus-ring focus-ring-light'
         type='text'
         placeholder='Enter a song, artist, or album'
         value={searchTerm}
@@ -35,7 +35,7 @@ function SearchBar (props) {
       />
       <button
         type='button'
-        className='btn btn-primary border-info text-uppercase px-5 py-2 rounded-pill'
+        className='btn btn-info border-info-subtle border-4 text-uppercase px-5 py-2 rounded-pill'
         onClick={handleSearch}
       >
         Search
