@@ -13,11 +13,11 @@ function Playlist (props) {
   )
 
   return (
-    <div className='w-50 px-4 ms-2 mb-4 d-flex flex-column shadow-lg rounded-4'>
+    <div className='sm w-50 px-4 ms-2 mb-3 d-flex flex-column shadow-lg rounded-4'>
       <h2 className='p-1 mb-4 rounded text-info text-center'>Playlist</h2>
-      <div className='w-100 mb-4 d-flex justify-content-around'>
+      <div className='w-100 mb-4 d-flex justify-content-center'>
         <input
-          className='w-75 ps-3 py-1 border-info border-3 focus-ring focus-ring-light rounded-pill bg-transparent'
+          className='w-75 ps-3 py-1 me-4 border-info border-3 focus-ring focus-ring-light rounded-pill bg-transparent'
           value={name}
           onChange={handleName}
         />

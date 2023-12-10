@@ -13,7 +13,7 @@ import Footer from '../Footer/Footer'
 
 function App () {
   const [searchResults, setSearchResults] = useState([])
-  const [playlistName, setPlaylistName] = useState('My Plylist')
+  const [playlistName, setPlaylistName] = useState('New Playlist')
   const [playlistTracks, setPlaylistTracks] = useState([])
   const [loading, setLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
@@ -89,7 +89,7 @@ function App () {
   }, [])
 
   return (
-    <div className='m-0 w-100 vh-100 bg-light'>
+    <div className='w-100 vh-100'>
       <Header />
       <SearchBar
         onSearch={search}
@@ -107,7 +107,7 @@ function App () {
         />
       </div>
       {loading && <LoadingScreen />}
-    <Footer />
+      <Footer />
     </div>
   )
 }
