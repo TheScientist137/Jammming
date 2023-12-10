@@ -33,14 +33,14 @@ function Track (props) {
             className='ms-4 mt-2 btn btn-outline-info border-3 rounded-pill fs-5'
             onClick={removeTrack}
           >
-            remove
+            Remove
           </button>
         ) : (
           <button
             className='ms-4 mt-2 btn btn-outline-info border-3 rounded-pill fs-5 '
             onClick={addTrack}
           >
-            add
+            Add
           </button>
         )}
       </div>
