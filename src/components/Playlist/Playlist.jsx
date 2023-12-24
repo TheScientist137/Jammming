@@ -13,7 +13,7 @@ function Playlist (props) {
   )
 
   return (
-    <div className='sm w-50 px-4 ms-2 mb-3 d-flex flex-column shadow-lg rounded-4'>
+    <div className='sm w-50 px-4 ms-2 mb-3 d-flex flex-column overflow-scroll shadow-lg rounded-4'>
       <h2 className='p-1 mb-4 rounded text-info text-center'>Playlist</h2>
       <div className='w-100 mb-4 d-flex justify-content-center'>
         <input
