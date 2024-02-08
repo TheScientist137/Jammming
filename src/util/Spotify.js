@@ -1,4 +1,4 @@
-const clientId = 'a0adec2a386e463780f8df55d499ecb9'
+const clientId = '53d6e3c7f31f4aec9439d97a02b3dbfb'
 const redirectURI = 'http://localhost:3000/callback'
 let accessToken = ''
 let tokenExpirationTime = 0

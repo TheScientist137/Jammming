@@ -96,7 +96,7 @@ function App () {
         searchTerm={searchTerm}
         onTermChange={setSearchTerm}
       />
-      <div className='h-75 mx-4 d-flex justify-content-center'>
+      <div className='container h-75 d-flex justify-content-center'>
         <SearchResults searchResults={searchResults} onAdd={addTrack} />
         <Playlist
           name={playlistName}
